@@ -1,0 +1,171 @@
+{{- /* SecShrimp Sci-Fi Theme - Interactive Effects */ -}}
+
+<!-- Particle Network Background -->
+<canvas id="particle-canvas"></canvas>
+<style>
+#particle-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: .45;
+}
+</style>
+
+<script>
+(function() {
+    // ===== Particle Network =====
+    const canvas = document.getElementById('particle-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let mouse = { x: null, y: null };
+    const PARTICLE_COUNT = 60;
+    const CONNECT_DIST = 140;
+    const MOUSE_DIST = 180;
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.vx = (Math.random() - .5) * .6;
+            this.vy = (Math.random() - .5) * .6;
+            this.radius = Math.random() * 2 + .5;
+        }
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            // Mouse repulsion
+            if (mouse.x !== null) {
+                const dx = this.x - mouse.x;
+                const dy = this.y - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < MOUSE_DIST) {
+                    const force = (MOUSE_DIST - dist) / MOUSE_DIST * .02;
+                    this.vx += dx * force;
+                    this.vy += dy * force;
+                }
+            }
+            // Damping
+            this.vx *= .999;
+            this.vy *= .999;
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(0,255,249,.6)';
+            ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
+
+    document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+    document.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
+
+    function drawLines() {
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < CONNECT_DIST) {
+                    const alpha = (1 - dist / CONNECT_DIST) * .25;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = `rgba(0,255,249,${alpha})`;
+                    ctx.lineWidth = .6;
+                    ctx.stroke();
+                }
+            }
+            // Lines to mouse
+            if (mouse.x !== null) {
+                const dx = particles[i].x - mouse.x;
+                const dy = particles[i].y - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < MOUSE_DIST) {
+                    const alpha = (1 - dist / MOUSE_DIST) * .35;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    ctx.strokeStyle = `rgba(255,0,255,${alpha})`;
+                    ctx.lineWidth = .4;
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => { p.update(); p.draw(); });
+        drawLines();
+        requestAnimationFrame(animate);
+    }
+    animate();
+
+    // ===== Typing Animation for Home Title =====
+    const homeTitle = document.querySelector('.home-info h1');
+    if (homeTitle) {
+        const text = homeTitle.textContent;
+        homeTitle.textContent = '';
+        homeTitle.style.borderRight = '2px solid #00fff9';
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                homeTitle.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 80 + Math.random() * 40);
+            } else {
+                // Blinking cursor
+                setInterval(() => {
+                    homeTitle.style.borderRight = homeTitle.style.borderRight === 'none' ? '2px solid #00fff9' : 'none';
+                }, 530);
+            }
+        }
+        setTimeout(typeWriter, 500);
+    }
+
+    // ===== Card Scroll Reveal (IntersectionObserver) =====
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: .1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.post-entry, .first-entry').forEach(el => {
+        observer.observe(el);
+    });
+
+    // ===== Navbar Scroll Effect =====
+    const nav = document.querySelector('.nav');
+    if (nav) {
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            if (scrollY > 50) {
+                nav.style.background = 'rgba(10,10,15,.92)';
+                nav.style.boxShadow = '0 2px 30px rgba(0,0,0,.6), 0 1px 0 rgba(0,255,249,.1)';
+            } else {
+                nav.style.background = 'rgba(10,10,15,.85)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,.4)';
+            }
+            lastScroll = scrollY;
+        });
+    }
+})();
+</script>

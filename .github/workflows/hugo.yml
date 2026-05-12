@@ -46,6 +46,19 @@ jobs:
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f yarn.lock ]] && npm ci || true"
 
+      - name: Fix future dates
+        run: |
+          current=$(date -u +%Y-%m-%dT%H:%M:%S%:z)
+          for f in content/posts/*.md; do
+            [ -f "$f" ] || continue
+            post_date=$(grep -m1 '^date:' "$f" | sed 's/^date: *//')
+            [ -z "$post_date" ] && continue
+            if [[ "$post_date" > "$current" ]]; then
+              sed -i "s/^date: .*/date: ${current}/" "$f"
+              echo "Fixed future date in: $f"
+            fi
+          done
+
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache

@@ -17,7 +17,8 @@ buildExpired = false
   keywords = ["网络安全", "渗透测试", "漏洞分析", "安全运营", "红队", "CTF", "AI安全"]
   author = "SecShrimp"
   defaultTheme = "auto"
-  ShowReadingTime = true
+  ShowReadingTime = false
+  DateFormat = "2006-01-02 15:04"
   ShowShareButtons = true
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
@@ -33,8 +34,8 @@ buildExpired = false
   tocopen = true
 
   [params.homeInfoParams]
-    Title = "🦐 SecShrimp Blog"
-    Content = "专注网络安全技术研究与知识分享。渗透测试、漏洞分析、安全运营、红队技术、AI安全 — 实战经验，干货输出。"
+    Title = "> INITIALIZING SECShrimp SYSTEM..."
+    Content = "**[ CLASSIFIED // SECURITY CLEARANCE: PUBLIC ]**\n\n专注网络安全技术研究与知识分享 — 渗透测试、漏洞分析、安全运营、红队技术、AI安全。实战经验，干货输出。\n\n`STATUS: ACTIVE` · `THREAT_LEVEL: ELEVATED` · `FEEDS: LIVE`"
 
   [[params.socialIcons]]
     name = "github"
