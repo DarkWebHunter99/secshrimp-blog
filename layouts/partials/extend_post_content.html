@@ -1,0 +1,37 @@
+{{- /* SecShrimp - Related Posts at bottom of article */ -}}
+
+{{- $related := where .Site.RegularPages "Section" "posts" }}
+{{- $related = where $related "RelPermalink" "!=" .RelPermalink }}
+{{- $currentTags := .Params.tags | default slice }}
+
+{{- $scored := slice }}
+{{- range $related }}
+    {{- $postTags := .Params.tags | default slice }}
+    {{- $common := intersect $currentTags $postTags }}
+    {{- $score := len $common }}
+    {{- if gt $score 0 }}
+        {{- $scored = $scored | append (dict "page" . "score" $score) }}
+    {{- end }}
+{{- end }}
+
+{{- $scored = $scored | sort "score" | reverse }}
+{{- $show := first 3 $scored }}
+
+{{- if gt (len $show) 0 }}
+<div class="related-posts">
+    <h3>📎 相关文章</h3>
+    <ul>
+        {{- range $show }}
+        <li>
+            <a href="{{ .page.RelPermalink }}">{{ .page.Title }}</a>
+            <div class="related-meta">
+                {{- if .page.Params.difficulty }}
+                <span class="difficulty-badge difficulty-{{ .page.Params.difficulty }}">{{ .page.Params.difficulty }}</span>
+                {{- end }}
+                {{- if .page.Params.readingTime }} · {{ .page.Params.readingTime }}{{- end }}
+            </div>
+        </li>
+        {{- end }}
+    </ul>
+</div>
+{{- end }}

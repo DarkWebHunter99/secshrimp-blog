@@ -35,11 +35,11 @@ buildExpired = false
 
   [params.homeInfoParams]
     Title = "SecShrimp Security Research"
-    Content = "专注网络安全技术研究与知识分享 — 渗透测试、漏洞分析、安全运营、红队技术、AI安全。实战经验，干货输出。"
+    Content = "专注网络安全技术研究与知识分享 — 渗透测试、漏洞分析、安全运营、红队技术、AI安全。实战经验，干货输出。\n\n📚 **7 篇文章** · 🔥 **5 个分类** · 🛡️ **攻击 / 防御 / AI / 红队 / 漏洞**"
 
   [[params.socialIcons]]
     name = "github"
-    url = "https://github.com/secshrimp"
+    url = "https://github.com/DarkWebHunter99"
 
   [params.editPost]
     URL = ""

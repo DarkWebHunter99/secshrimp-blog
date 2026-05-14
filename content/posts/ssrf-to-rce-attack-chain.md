@@ -1,4 +1,4 @@
----
+﻿---
 title: "SSRF 攻击全指南：从信息收集到 RCE 的完整攻击链"
 date: 2026-05-11T09:00:00+08:00
 draft: false
@@ -6,6 +6,8 @@ categories: ["攻击技术"]
 tags: ["SSRF", "RCE", "云安全", "内网渗透", "Web安全"]
 description: "系统梳理 SSRF 攻击的完整链路，从协议利用到云元数据获取，再到内网服务攻击实现 RCE。"
 showToc: true
+difficulty: intermediate
+readingTime: 15 min
 TocOpen: true
 ---
 

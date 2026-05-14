@@ -1,0 +1,77 @@
+{{- /* SecShrimp - Homepage Category Cards */ -}}
+
+<div class="category-cards">
+    <a href="/categories/" class="category-card">
+        <div class="card-icon">⚔️</div>
+        <div class="card-title">攻击技术</div>
+        <div class="card-desc">SQL注入、SSRF、反序列化、文件上传、API攻击</div>
+    </a>
+    <a href="/categories/" class="category-card">
+        <div class="card-icon">🛡️</div>
+        <div class="card-title">防御策略</div>
+        <div class="card-desc">输入验证、认证安全、网络安全、端点防护</div>
+    </a>
+    <a href="/categories/" class="category-card">
+        <div class="card-icon">🤖</div>
+        <div class="card-title">AI 安全</div>
+        <div class="card-desc">Prompt Injection、Agent安全、MCP供应链攻击</div>
+    </a>
+    <a href="/categories/" class="category-card">
+        <div class="card-icon">🎭</div>
+        <div class="card-title">红队技术</div>
+        <div class="card-desc">免杀技术、C2框架、持久化、供应链攻击</div>
+    </a>
+    <a href="/categories/" class="category-card">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">漏洞分析</div>
+        <div class="card-desc">CVE分析、漏洞挖掘、PoC编写、安全审计</div>
+    </a>
+</div>
+
+<style>
+.category-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+}
+.category-card {
+    background: var(--bg-card, #1c2128);
+    border: 1px solid var(--border, #30363d);
+    border-radius: 8px;
+    padding: 18px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    display: block;
+}
+.category-card:hover {
+    border-color: var(--accent-cyan, #22d3ee);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+.card-icon {
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+}
+.card-title {
+    font-weight: 600;
+    color: var(--text-primary, #e6edf3);
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+.card-desc {
+    color: var(--text-secondary, #8b949e);
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+@media (max-width: 768px) {
+    .category-cards {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 480px) {
+    .category-cards {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

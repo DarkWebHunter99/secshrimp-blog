@@ -1,4 +1,4 @@
----
+﻿---
 title: "红队免杀技术概述：Shellcode 加载与检测规避"
 date: 2026-05-11T06:00:00+08:00
 draft: false
@@ -6,6 +6,8 @@ categories: ["红队技术"]
 tags: ["免杀", "Shellcode", "红队", "EDR绕过", "内存加载"]
 description: "系统梳理红队常用的 Shellcode 免杀技术，包括分离加载、加密编码、内存加载、Syscall 直接调用等方法。"
 showToc: true
+difficulty: advanced
+readingTime: 18 min
 TocOpen: true
 ---
 

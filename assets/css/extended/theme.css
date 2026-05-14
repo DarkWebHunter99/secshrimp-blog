@@ -11,6 +11,8 @@
     --accent-amber: #f59e0b;
     --accent-blue: #3b82f6;
     --accent-green: #34d399;
+    --accent-red: #ef4444;
+    --accent-purple: #a855f7;
 }
 
 [data-theme="dark"], :root[data-theme="dark"] {
@@ -79,6 +81,115 @@ body {
     font-size: 0.875rem;
 }
 
+/* --- Difficulty Badges --- */
+.difficulty-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    vertical-align: middle;
+}
+.difficulty-beginner {
+    background: rgba(52, 211, 153, 0.15);
+    color: var(--accent-green);
+    border: 1px solid rgba(52, 211, 153, 0.3);
+}
+.difficulty-intermediate {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--accent-amber);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+.difficulty-advanced {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--accent-red);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* --- Reading Time --- */
+.reading-time {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-left: 8px;
+}
+
+/* --- Category Cards (Homepage) --- */
+.category-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+}
+.category-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    display: block;
+}
+.category-card:hover {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+.category-card .card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+.category-card .card-title {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+.category-card .card-desc {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* --- Related Posts --- */
+.related-posts {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+.related-posts h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+.related-posts ul {
+    list-style: none;
+    padding: 0;
+}
+.related-posts li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+}
+.related-posts li:last-child {
+    border-bottom: none;
+}
+.related-posts a {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    font-weight: 500;
+}
+.related-posts a:hover {
+    text-decoration: underline;
+}
+.related-posts .related-meta {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
 /* --- Navigation --- */
 .nav {
     background: rgba(15, 17, 23, 0.9) !important;
@@ -136,6 +247,26 @@ body {
     color: var(--text-secondary) !important;
     font-size: 1rem;
     line-height: 1.8;
+}
+
+/* --- Stats Bar --- */
+.stats-bar {
+    display: flex;
+    gap: 24px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+.stat-item .stat-num {
+    font-weight: 700;
+    color: var(--accent-cyan);
+    font-size: 1.1rem;
 }
 
 /* --- Code Blocks --- */
@@ -332,5 +463,11 @@ footer a {
     }
     .home-info {
         padding: 20px 22px !important;
+    }
+    .category-cards {
+        grid-template-columns: 1fr;
+    }
+    .stats-bar {
+        gap: 12px;
     }
 }

@@ -1,4 +1,4 @@
----
+﻿---
 title: "供应链攻击深度解析：从依赖混淆到 SolarWinds 级渗透"
 date: 2026-05-13T16:56:00+08:00
 draft: false
@@ -6,6 +6,8 @@ categories: ["红队技术", "攻防实战"]
 tags: ["供应链攻击", "Dependency Confusion", "Typosquatting", "CI/CD安全", "SBOM"]
 description: "详解 2026 年最危险的攻击向量之一——软件供应链攻击，覆盖依赖混淆、Typosquatting、CI/CD 管道渗透等手法，附带检测规则和防御方案。"
 showToc: true
+difficulty: intermediate
+readingTime: 16 min
 TocOpen: true
 ---
 

@@ -1,4 +1,4 @@
----
+﻿---
 title: "MCP Server Injection：首个在野 MCP 供应链攻击深度分析"
 date: 2026-05-11T07:00:00+08:00
 draft: false
@@ -6,6 +6,8 @@ categories: ["AI安全"]
 tags: ["MCP", "供应链攻击", "Prompt Injection", "AI安全", "npm"]
 description: "深度分析首个在野利用 MCP Server Injection 的供应链攻击 SANDWORM_MODE，解析攻击链和防御策略。"
 showToc: true
+difficulty: advanced
+readingTime: 14 min
 TocOpen: true
 ---
 

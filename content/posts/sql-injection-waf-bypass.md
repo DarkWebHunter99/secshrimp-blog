@@ -1,4 +1,4 @@
----
+﻿---
 title: "SQL 注入 WAF 绕过技术详解：从基础到高级"
 date: 2026-05-11T10:00:00+08:00
 draft: false
@@ -6,6 +6,8 @@ categories: ["攻击技术"]
 tags: ["SQL注入", "WAF绕过", "Web安全", "渗透测试"]
 description: "深入解析 SQL 注入中 WAF 绕过的各种技术手段，包括大小写混用、注释绕过、编码绕过、内联注释等方法，附带实战 Payload。"
 showToc: true
+difficulty: intermediate
+readingTime: 12 min
 TocOpen: true
 ---
 
