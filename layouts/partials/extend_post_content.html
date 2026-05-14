@@ -14,7 +14,7 @@
     {{- end }}
 {{- end }}
 
-{{- $scored = $scored | sort "score" | reverse }}
+{{- $scored = sort $scored "score" "desc" }}
 {{- $show := first 3 $scored }}
 
 {{- if gt (len $show) 0 }}
