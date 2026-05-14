@@ -1,64 +1,17 @@
-{{- /* SecShrimp - Homepage Enhancement */ -}}
+{{- /* SecShrimp - Homepage: Category Cards + Section Label */ -}}
 
 <style>
-.kb-banner {
-    background: var(--bg-card, #1c2128);
-    border: 1px solid var(--border, #30363d);
-    border-radius: 8px;
-    padding: 20px 24px;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
-}
-.kb-banner-text {
-    font-size: 0.9rem;
-    color: var(--text-secondary, #8b949e);
-}
-.kb-banner-text strong {
-    color: var(--text-primary, #e6edf3);
-}
-.kb-banner-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    background: rgba(34, 211, 238, 0.1);
-    border: 1px solid rgba(34, 211, 238, 0.3);
-    border-radius: 6px;
-    color: var(--accent-cyan, #22d3ee);
-    font-size: 0.85rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.2s;
-}
-.kb-banner-link:hover {
-    background: rgba(34, 211, 238, 0.15);
-    border-color: var(--accent-cyan, #22d3ee);
-    text-decoration: none;
-}
-.section-label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-secondary, #8b949e);
-    margin-bottom: 12px;
-    font-weight: 600;
-}
-@media (max-width: 768px) {
-    .kb-banner { flex-direction: column; text-align: center; }
-}
+.kb-banner{background:var(--bg-card,#1c2128);border:1px solid var(--border,#30363d);border-radius:10px;padding:18px 22px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.kb-banner-text{font-size:.85rem;color:var(--text-secondary,#8b949e)}
+.kb-banner-text strong{color:var(--text-primary,#e6edf3)}
+.kb-link{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;background:rgba(88,166,255,.08);border:1px solid rgba(88,166,255,.25);border-radius:6px;color:var(--accent,#58a6ff);font-size:.8rem;font-weight:500;text-decoration:none;transition:all .15s}
+.kb-link:hover{background:rgba(88,166,255,.12);border-color:var(--accent,#58a6ff);text-decoration:none}
+.sec-label{font-size:.7rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--fg-3,#6e7681);margin-bottom:14px;font-weight:700}
 </style>
 
 <div class="kb-banner">
-    <div class="kb-banner-text">
-        📚 <strong>安全虾知识库</strong> — 22 个专题文件，覆盖攻击/防御/AI/工具，含 5 阶段学习路径
-    </div>
-    <a href="https://github.com/DarkWebHunter99/secshrimp-kb" target="_blank" class="kb-banner-link">
-        查看知识库 →
-    </a>
+    <div class="kb-banner-text">📚 <strong>安全虾知识库</strong> — 22 个专题 · 5 阶段学习路径 · 可打印速查手册</div>
+    <a href="https://github.com/DarkWebHunter99/secshrimp-kb" target="_blank" class="kb-link">知识库 →</a>
 </div>
 
-<div class="section-label">🔥 最新文章</div>
+<div class="sec-label">🔥 最新文章</div>

@@ -1,6 +1,14 @@
-{{- /* SecShrimp Theme - Head Extensions */ -}}
+{{- /* SecShrimp - Head Extensions */ -}}
 
-<!-- Google Fonts: Inter (body) + Noto Sans SC (Chinese) + JetBrains Mono (code) -->
+<!-- Fonts: Inter + Noto Sans SC + JetBrains Mono -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Theme initialization (prevent flash) -->
+<script>
+(function() {
+    var t = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+})();
+</script>

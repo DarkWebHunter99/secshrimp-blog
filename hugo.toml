@@ -14,11 +14,11 @@ buildExpired = false
   env = "production"
   title = "SecShrimp Blog"
   description = "专业网络安全知识分享 — 渗透测试、漏洞分析、安全运营、红队技术、AI安全"
-  keywords = ["网络安全", "渗透测试", "漏洞分析", "安全运营", "红队", "蓝队", "CTF", "AI安全", "供应链安全", "代码审计"]
+  keywords = ["网络安全", "渗透测试", "漏洞分析", "安全运营", "红队", "AI安全", "供应链安全", "代码审计"]
   author = "SecShrimp"
-  defaultTheme = "auto"
+  defaultTheme = "dark"
   ShowReadingTime = true
-  DateFormat = "2006-01-02 15:04"
+  DateFormat = "2006-01-02"
   ShowShareButtons = true
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
@@ -26,16 +26,16 @@ buildExpired = false
   ShowWordCount = true
   ShowRssButtonInSectionTermList = true
   UseHugoToc = true
-  disableSpecial1stPost = false
-  disableScrollToTop = false
+  disableSpecial1stPost = true
+  disableScrollToTop = true
   hidemeta = false
-  hideSummary = false
+  hideSummary = true
   showtoc = true
   tocopen = true
 
   [params.homeInfoParams]
     Title = "SecShrimp Security Research"
-    Content = "专注网络安全技术研究与知识分享 — 渗透测试、漏洞分析、安全运营、红队技术、AI安全。实战经验，干货输出。\n\n📚 **7 篇文章** · 🔥 **5 个分类** · 🛡️ **攻击 / 防御 / AI / 红队 / 漏洞**"
+    Content = "专注网络安全技术研究与知识分享 — 渗透测试、漏洞分析、安全运营、红队技术、AI安全。实战经验，干货输出。"
 
   [[params.socialIcons]]
     name = "github"
@@ -53,15 +53,15 @@ buildExpired = false
     favicon32x32 = "favicon-32x32.png"
     apple_touch_icon = "apple-touch-icon.png"
     safari_pinned_tab = "safari-pinned-tab.svg"
-    theme_color = "#0a0a0f"
-    msapplication_TileColor = "#0a0a0f"
+    theme_color = "#0d1117"
+    msapplication_TileColor = "#0d1117"
 
 [markup]
   [markup.highlight]
     codeFences = true
     guessSyntax = true
-    lineNos = true
-    style = "monokai"
+    lineNos = false
+    style = "dracula"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true

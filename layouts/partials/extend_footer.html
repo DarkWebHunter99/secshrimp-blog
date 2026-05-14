@@ -1,123 +1,143 @@
-{{- /* SecShrimp Theme - Footer Extensions */ -}}
+{{- /* SecShrimp - Footer Extensions */ -}}
 
 <script>
 (function() {
+    // ===== Theme Toggle =====
+    window.toggleTheme = function() {
+        var html = document.documentElement;
+        var current = html.getAttribute('data-theme') || 'dark';
+        var next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+    };
+
     // ===== Scroll Reveal =====
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+            if (e.isIntersecting) {
+                e.target.style.opacity = '1';
+                e.target.style.transform = 'translateY(0)';
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08 });
 
-    document.querySelectorAll('.post-entry, .first-entry').forEach(el => {
+    document.querySelectorAll('.post-entry, .first-entry').forEach(function(el) {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        el.style.transform = 'translateY(16px)';
+        el.style.transition = 'opacity .4s ease, transform .4s ease';
         observer.observe(el);
     });
 
-    // ===== Navbar Scroll Effect =====
-    const nav = document.querySelector('.nav');
-    if (nav) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                nav.style.background = 'rgba(15, 17, 23, 0.95)';
-                nav.style.boxShadow = '0 1px 8px rgba(0,0,0,0.3)';
-            } else {
-                nav.style.background = 'rgba(15, 17, 23, 0.9)';
-                nav.style.boxShadow = 'none';
-            }
-        });
-    }
-
-    // ===== Difficulty Badges + Reading Time on Post Cards =====
-    var postMeta = {
-        'sql-injection-waf-bypass': { difficulty: 'intermediate', time: '12 min', label: '中级' },
-        'ssrf-to-rce-attack-chain': { difficulty: 'intermediate', time: '15 min', label: '中级' },
-        '2026-05-cve-critical-alert': { difficulty: 'beginner', time: '10 min', label: '入门' },
-        'mcp-server-injection-attack': { difficulty: 'advanced', time: '14 min', label: '高级' },
-        'red-team-shellcode-evasion': { difficulty: 'advanced', time: '18 min', label: '高级' },
-        'supply-chain-attack-2026': { difficulty: 'intermediate', time: '16 min', label: '中级' },
-        'openclaw-cve-security-analysis': { difficulty: 'advanced', time: '15 min', label: '高级' }
+    // ===== Difficulty Badges + Reading Time on Cards =====
+    var meta = {
+        'sql-injection-waf-bypass': { diff: 'intermediate', time: '12 min', label: '中级' },
+        'ssrf-to-rce-attack-chain': { diff: 'intermediate', time: '15 min', label: '中级' },
+        '2026-05-cve-critical-alert': { diff: 'beginner', time: '10 min', label: '入门' },
+        'mcp-server-injection-attack': { diff: 'advanced', time: '14 min', label: '高级' },
+        'red-team-shellcode-evasion': { diff: 'advanced', time: '18 min', label: '高级' },
+        'supply-chain-attack-2026': { diff: 'intermediate', time: '16 min', label: '中级' },
+        'openclaw-cve-security-analysis': { diff: 'advanced', time: '15 min', label: '高级' }
     };
-
-    var diffColors = {
-        beginner: { bg: 'rgba(52,211,153,0.12)', color: '#34d399', border: 'rgba(52,211,153,0.3)' },
-        intermediate: { bg: 'rgba(245,158,11,0.12)', color: '#f59e0b', border: 'rgba(245,158,11,0.3)' },
-        advanced: { bg: 'rgba(239,68,68,0.12)', color: '#ef4444', border: 'rgba(239,68,68,0.3)' }
+    var colors = {
+        beginner: ['rgba(63,185,80,.12)', '#3fb950', 'rgba(63,185,80,.25)'],
+        intermediate: ['rgba(210,153,34,.12)', '#d29922', 'rgba(210,153,34,.25)'],
+        advanced: ['rgba(248,81,73,.12)', '#f85149', 'rgba(248,81,73,.25)']
     };
 
     document.querySelectorAll('.post-entry, .first-entry').forEach(function(card) {
         var link = card.querySelector('a[href*="/posts/"]');
         if (!link) return;
-        var href = link.getAttribute('href') || '';
+        var parts = (link.getAttribute('href') || '').split('/');
         var slug = '';
-        var parts = href.split('/');
         for (var i = parts.length - 1; i >= 0; i--) {
             if (parts[i] && parts[i] !== '') { slug = parts[i].replace(/\/$/, ''); break; }
         }
-        var meta = postMeta[slug];
-        if (!meta) return;
-
-        // Add difficulty badge
-        var colors = diffColors[meta.difficulty] || diffColors.intermediate;
-        var badge = document.createElement('span');
-        badge.textContent = meta.label;
-        badge.style.cssText = 'display:inline-block;font-size:0.65rem;font-weight:600;padding:1px 6px;border-radius:3px;margin-left:8px;vertical-align:middle;background:' + colors.bg + ';color:' + colors.color + ';border:1px solid ' + colors.border + ';letter-spacing:0.3px;text-transform:uppercase;';
+        var m = meta[slug];
+        if (!m) return;
+        var c = colors[m.diff] || colors.intermediate;
         var footer = card.querySelector('.entry-footer');
-        if (footer) footer.appendChild(badge);
+        if (!footer) return;
 
-        // Add reading time
-        var timeSpan = document.createElement('span');
-        timeSpan.textContent = '📖 ' + meta.time;
-        timeSpan.style.cssText = 'display:inline-block;font-size:0.75rem;color:#8b949e;margin-left:8px;';
-        if (footer) footer.appendChild(timeSpan);
+        var badge = document.createElement('span');
+        badge.textContent = m.label;
+        badge.style.cssText = 'display:inline-block;font-size:.6rem;font-weight:600;padding:1px 6px;border-radius:3px;margin-left:8px;vertical-align:middle;background:' + c[0] + ';color:' + c[1] + ';border:1px solid ' + c[2] + ';letter-spacing:.3px;text-transform:uppercase;';
+        footer.appendChild(badge);
+
+        var time = document.createElement('span');
+        time.textContent = ' · ' + m.time;
+        time.style.cssText = 'font-size:.75rem;color:#8b949e;';
+        footer.appendChild(time);
     });
 
-    // ===== Code Block Copy Button Enhancement =====
-    document.querySelectorAll('pre').forEach(function(pre) {
-        pre.style.position = 'relative';
-    });
-
-    // ===== Smooth Anchor Scrolling =====
-    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-        a.addEventListener('click', function(e) {
-            var target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
-
-    // ===== Table of Contents Active State =====
+    // ===== TOC Active Highlight =====
     var tocLinks = document.querySelectorAll('#TableOfContents a');
     if (tocLinks.length > 0) {
         var headings = [];
         tocLinks.forEach(function(link) {
-            var id = link.getAttribute('href')?.substring(1);
-            if (id) {
-                var el = document.getElementById(id);
-                if (el) headings.push({ el: el, link: link });
-            }
+            var id = (link.getAttribute('href') || '').substring(1);
+            var el = id && document.getElementById(id);
+            if (el) headings.push({ el: el, link: link });
         });
         if (headings.length > 0) {
             window.addEventListener('scroll', function() {
-                var scrollPos = window.scrollY + 100;
+                var pos = window.scrollY + 120;
                 var active = headings[0];
                 for (var i = 0; i < headings.length; i++) {
-                    if (headings[i].el.offsetTop <= scrollPos) active = headings[i];
+                    if (headings[i].el.offsetTop <= pos) active = headings[i];
                 }
-                tocLinks.forEach(function(l) { l.style.color = ''; l.style.fontWeight = ''; });
+                tocLinks.forEach(function(l) { l.style.color = ''; l.style.fontWeight = ''; l.style.borderColor = ''; });
                 if (active) {
-                    active.link.style.color = '#22d3ee';
+                    active.link.style.color = 'var(--accent)';
                     active.link.style.fontWeight = '500';
                 }
             });
         }
     }
+
+    // ===== Navbar Scroll =====
+    var nav = document.querySelector('.nav');
+    if (nav) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 20) {
+                nav.style.boxShadow = '0 1px 8px rgba(0,0,0,.2)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+    }
+
+    // ===== Back to Top =====
+    var btn = document.getElementById('backTop');
+    if (btn) {
+        window.addEventListener('scroll', function() {
+            btn.classList.toggle('show', window.scrollY > 400);
+        });
+    }
+
+    // ===== Smooth Anchor =====
+    document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+        a.addEventListener('click', function(e) {
+            var t = document.querySelector(this.getAttribute('href'));
+            if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        });
+    });
+
+    // ===== Code Block Language Labels =====
+    document.querySelectorAll('pre > code').forEach(function(code) {
+        var cls = code.className;
+        var lang = '';
+        if (cls.match(/language-(\w+)/)) lang = RegExp.$1;
+        else if (cls.match(/lang-(\w+)/)) lang = RegExp.$1;
+        if (lang) {
+            var pre = code.parentElement;
+            pre.style.position = 'relative';
+            var label = document.createElement('span');
+            label.textContent = lang;
+            label.style.cssText = 'position:absolute;top:8px;right:12px;font-size:.6rem;color:#6e7681;text-transform:uppercase;letter-spacing:.5px;font-weight:600;font-family:Inter,sans-serif;';
+            pre.appendChild(label);
+        }
+    });
 })();
 </script>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
