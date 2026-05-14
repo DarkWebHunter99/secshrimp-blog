@@ -1,77 +1,64 @@
-{{- /* SecShrimp - Homepage Category Cards */ -}}
-
-<div class="category-cards">
-    <a href="/categories/" class="category-card">
-        <div class="card-icon">⚔️</div>
-        <div class="card-title">攻击技术</div>
-        <div class="card-desc">SQL注入、SSRF、反序列化、文件上传、API攻击</div>
-    </a>
-    <a href="/categories/" class="category-card">
-        <div class="card-icon">🛡️</div>
-        <div class="card-title">防御策略</div>
-        <div class="card-desc">输入验证、认证安全、网络安全、端点防护</div>
-    </a>
-    <a href="/categories/" class="category-card">
-        <div class="card-icon">🤖</div>
-        <div class="card-title">AI 安全</div>
-        <div class="card-desc">Prompt Injection、Agent安全、MCP供应链攻击</div>
-    </a>
-    <a href="/categories/" class="category-card">
-        <div class="card-icon">🎭</div>
-        <div class="card-title">红队技术</div>
-        <div class="card-desc">免杀技术、C2框架、持久化、供应链攻击</div>
-    </a>
-    <a href="/categories/" class="category-card">
-        <div class="card-icon">🔍</div>
-        <div class="card-title">漏洞分析</div>
-        <div class="card-desc">CVE分析、漏洞挖掘、PoC编写、安全审计</div>
-    </a>
-</div>
+{{- /* SecShrimp - Homepage Enhancement */ -}}
 
 <style>
-.category-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 14px;
-    margin: 20px 0;
-}
-.category-card {
+.kb-banner {
     background: var(--bg-card, #1c2128);
     border: 1px solid var(--border, #30363d);
     border-radius: 8px;
-    padding: 18px;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    text-decoration: none;
-    display: block;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
 }
-.category-card:hover {
-    border-color: var(--accent-cyan, #22d3ee);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    text-decoration: none;
-}
-.card-icon {
-    font-size: 1.4rem;
-    margin-bottom: 6px;
-}
-.card-title {
-    font-weight: 600;
-    color: var(--text-primary, #e6edf3);
-    font-size: 0.95rem;
-    margin-bottom: 4px;
-}
-.card-desc {
+.kb-banner-text {
+    font-size: 0.9rem;
     color: var(--text-secondary, #8b949e);
-    font-size: 0.8rem;
-    line-height: 1.5;
+}
+.kb-banner-text strong {
+    color: var(--text-primary, #e6edf3);
+}
+.kb-banner-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: rgba(34, 211, 238, 0.1);
+    border: 1px solid rgba(34, 211, 238, 0.3);
+    border-radius: 6px;
+    color: var(--accent-cyan, #22d3ee);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.kb-banner-link:hover {
+    background: rgba(34, 211, 238, 0.15);
+    border-color: var(--accent-cyan, #22d3ee);
+    text-decoration: none;
+}
+.section-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary, #8b949e);
+    margin-bottom: 12px;
+    font-weight: 600;
 }
 @media (max-width: 768px) {
-    .category-cards {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-@media (max-width: 480px) {
-    .category-cards {
-        grid-template-columns: 1fr;
-    }
+    .kb-banner { flex-direction: column; text-align: center; }
 }
 </style>
+
+<div class="kb-banner">
+    <div class="kb-banner-text">
+        📚 <strong>安全虾知识库</strong> — 22 个专题文件，覆盖攻击/防御/AI/工具，含 5 阶段学习路径
+    </div>
+    <a href="https://github.com/DarkWebHunter99/secshrimp-kb" target="_blank" class="kb-banner-link">
+        查看知识库 →
+    </a>
+</div>
+
+<div class="section-label">🔥 最新文章</div>
