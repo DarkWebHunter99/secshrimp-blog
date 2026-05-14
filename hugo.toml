@@ -14,7 +14,7 @@ buildExpired = false
   env = "production"
   title = "SecShrimp Blog"
   description = "专业网络安全知识分享 — 渗透测试、漏洞分析、安全运营、红队技术、AI安全"
-  keywords = ["网络安全", "渗透测试", "漏洞分析", "安全运营", "红队", "CTF", "AI安全"]
+  keywords = ["网络安全", "渗透测试", "漏洞分析", "安全运营", "红队", "蓝队", "CTF", "AI安全", "供应链安全", "代码审计"]
   author = "SecShrimp"
   defaultTheme = "auto"
   ShowReadingTime = false
@@ -34,8 +34,8 @@ buildExpired = false
   tocopen = true
 
   [params.homeInfoParams]
-    Title = "> INITIALIZING SECShrimp SYSTEM..."
-    Content = "**[ CLASSIFIED // SECURITY CLEARANCE: PUBLIC ]**\n\n专注网络安全技术研究与知识分享 — 渗透测试、漏洞分析、安全运营、红队技术、AI安全。实战经验，干货输出。\n\n`STATUS: ACTIVE` · `THREAT_LEVEL: ELEVATED` · `FEEDS: LIVE`"
+    Title = "SecShrimp Security Research"
+    Content = "专注网络安全技术研究与知识分享 — 渗透测试、漏洞分析、安全运营、红队技术、AI安全。实战经验，干货输出。"
 
   [[params.socialIcons]]
     name = "github"
@@ -92,6 +92,11 @@ buildExpired = false
     name = "搜索"
     url = "/search/"
     weight = 5
+  [[menu.main]]
+    identifier = "about"
+    name = "关于"
+    url = "/about/"
+    weight = 6
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
