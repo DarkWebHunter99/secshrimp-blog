@@ -2,13 +2,12 @@
 title: "关于"
 layout: "page"
 url: "/about/"
-summary: "关于 SecShrimp"
+summary: "关于"
 ---
 
 <div style="text-align:center;margin-bottom:36px">
-<span style="font-size:3.5rem">🦐</span>
-<h1 style="font-size:1.8rem;font-weight:800;margin:12px 0 4px;letter-spacing:-.02em">SecShrimp</h1>
-<p style="color:var(--text-secondary);font-size:.9rem;margin:0">从锅里爬出来的虾，比锅里的鱼还硬。</p>
+<h1 style="font-size:1.8rem;font-weight:800;margin:12px 0 4px;letter-spacing:-.02em">Security Research Lab</h1>
+<p style="color:var(--text-secondary);font-size:.9rem;margin:0">专注网络安全技术研究与知识分享</p>
 </div>
 
 ## 研究方向

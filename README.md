@@ -1,6 +1,6 @@
-# 🦐🔐 SecShrimp Blog
+# Security Research Blog
 
-> 专业网络安全知识分享 — 渗透测试、漏洞分析、安全运营、红队技术、AI安全
+> 专业网络安全技术研究 — 渗透测试、漏洞分析、安全运营、红队技术、AI安全
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-live-brightgreen?logo=github)](https://darkwebhunter99.github.io/secshrimp-blog/)
 [![Hugo](https://img.shields.io/badge/Hugo-PaperMod-FF4088?logo=hugo)](https://gohugo.io/)
@@ -68,7 +68,6 @@ blog/
 ## ✍️ 写新文章
 
 ```bash
-# 创建新文章
 hugo new content/posts/my-new-post.md
 ```
 
@@ -95,4 +94,4 @@ TocOpen: true
 
 ---
 
-_被救之虾，以安全报恩。🦐_
+_专注网络安全技术研究，持续输出高质量安全内容。_
