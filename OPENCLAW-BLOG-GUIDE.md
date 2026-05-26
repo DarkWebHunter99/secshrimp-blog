@@ -7,7 +7,7 @@
 - **框架:** Hugo + PaperMod 主题
 - **部署:** GitHub Pages (darkwebhunter99.github.io/secshrimp-blog/)
 - **配置:** `blog/hugo.toml`
-- **自定义样式:** `blog/assets/css/extended/scifi.css`
+- **自定义样式:** `blog/assets/css/extended/theme.css`
 - **自定义脚本:** `blog/layouts/partials/extend_footer.html`
 - **自定义头部:** `blog/layouts/partials/extend_head.html`
 - **文章目录:** `blog/content/posts/`
@@ -35,7 +35,7 @@
 - 标题层级是否清晰
 
 改进方向：
-- 调整 `scifi.css` 中的 padding、margin
+- 调整 `theme.css` 中的 padding、margin
 - 添加断点响应式样式
 
 ### 3. 视觉特效
@@ -59,7 +59,7 @@
 ## 优化工作流
 
 1. **分析阶段**
-   - 读取当前 `scifi.css` 和 `extend_footer.html`
+   - 读取当前 `theme.css` 和 `extend_footer.html`
    - 检查博客文章目录结构
    - 识别需要改进的点
 

@@ -1,4 +1,4 @@
-{{- /* SecShrimp - Footer Extensions */ -}}
+﻿{{- /* SecShrimp - Footer Extensions */ -}}
 
 <script>
 (function() {
@@ -30,13 +30,13 @@
 
     // ===== Difficulty Badges + Reading Time on Cards =====
     var meta = {
-        'sql-injection-waf-bypass': { diff: 'intermediate', time: '12 min', label: '中级' },
-        'ssrf-to-rce-attack-chain': { diff: 'intermediate', time: '15 min', label: '中级' },
-        '2026-05-cve-critical-alert': { diff: 'beginner', time: '10 min', label: '入门' },
-        'mcp-server-injection-attack': { diff: 'advanced', time: '14 min', label: '高级' },
-        'red-team-shellcode-evasion': { diff: 'advanced', time: '18 min', label: '高级' },
-        'supply-chain-attack-2026': { diff: 'intermediate', time: '16 min', label: '中级' },
-        'openclaw-cve-security-analysis': { diff: 'advanced', time: '15 min', label: '高级' }
+        'sql-injection-waf-bypass': { diff: 'intermediate', time: '12 min', label: '涓骇' },
+        'ssrf-to-rce-attack-chain': { diff: 'intermediate', time: '15 min', label: '涓骇' },
+        '2026-05-cve-critical-alert': { diff: 'beginner', time: '10 min', label: '鍏ラ棬' },
+        'mcp-server-injection-attack': { diff: 'advanced', time: '14 min', label: '楂樼骇' },
+        'red-team-shellcode-evasion': { diff: 'advanced', time: '18 min', label: '楂樼骇' },
+        'supply-chain-attack-2026': { diff: 'intermediate', time: '16 min', label: '涓骇' },
+        'openclaw-cve-security-analysis': { diff: 'advanced', time: '15 min', label: '楂樼骇' }
     };
     var colors = {
         beginner: ['rgba(63,185,80,.12)', '#3fb950', 'rgba(63,185,80,.25)'],
@@ -64,7 +64,7 @@
         footer.appendChild(badge);
 
         var time = document.createElement('span');
-        time.textContent = ' · ' + m.time;
+        time.textContent = ' 路 ' + m.time;
         time.style.cssText = 'font-size:.75rem;color:#8b949e;';
         footer.appendChild(time);
     });
@@ -82,8 +82,12 @@
             window.addEventListener('scroll', function() {
                 var pos = window.scrollY + 120;
                 var active = headings[0];
-                for (var i = 0; i < headings.length; i++) {
-                    if (headings[i].el.offsetTop <= pos) active = headings[i];
+                var atBottom = (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 40);
+                if (atBottom) { active = headings[headings.length - 1]; }
+                else {
+                    for (var i = 0; i < headings.length; i++) {
+                        if (headings[i].el.offsetTop <= pos) active = headings[i];
+                    }
                 }
                 tocLinks.forEach(function(l) { l.style.color = ''; l.style.fontWeight = ''; l.style.borderColor = ''; });
                 if (active) {
@@ -133,11 +137,11 @@
             pre.style.position = 'relative';
             var label = document.createElement('span');
             label.textContent = lang;
-            label.style.cssText = 'position:absolute;top:8px;right:12px;font-size:.6rem;color:#6e7681;text-transform:uppercase;letter-spacing:.5px;font-weight:600;font-family:Inter,sans-serif;';
+            label.style.cssText = 'position:absolute;top:8px;right:12px;font-size:.6rem;color:var(--fg-3);text-transform:uppercase;letter-spacing:.5px;font-weight:600;font-family:Inter,sans-serif;';
             pre.appendChild(label);
         }
     });
 })();
 </script>
 
-<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">鈫?/button>
